@@ -4397,8 +4397,10 @@ __metadata:
     gatsby-plugin-sharp: ^3.9.0
     gatsby-source-filesystem: ^3.9.0
     gatsby-transformer-sharp: ^3.9.0
+    prop-types: ^15.7.2
     react: ^17.0.1
     react-dom: ^17.0.1
+    react-helmet: ^6.1.0
   languageName: unknown
   linkType: soft
 
@@ -13688,6 +13690,27 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"react-fast-compare@npm:^3.1.1":
+  version: 3.2.0
+  resolution: "react-fast-compare@npm:3.2.0"
+  checksum: 6fe65c889eb4f326e97769135f97b3d63ac68737866f9c37f9625c9de4f5eaa9abed6f748eb3fd6a66808392118842916309cab7cfa99c67991f0c837433d6d2
+  languageName: node
+  linkType: hard
+
+"react-helmet@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "react-helmet@npm:6.1.0"
+  dependencies:
+    object-assign: ^4.1.1
+    prop-types: ^15.7.2
+    react-fast-compare: ^3.1.1
+    react-side-effect: ^2.1.0
+  peerDependencies:
+    react: ">=16.3.0"
+  checksum: 56fd795b0aecc89bac8d2733268751f0ef463bf6764090f8a801778741d4a6eaf135234cdaa50188bbda29c8e2d3ec43e9a42d1ec06b60092645c8754c7bad81
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.12.0, react-is@npm:^16.8.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -13706,6 +13729,15 @@ fsevents@~2.3.2:
   version: 0.9.0
   resolution: "react-refresh@npm:0.9.0"
   checksum: 300dc431389f4c532bdfec08d5bc59b591c8c440486a7d5770c8954adf3afe62501b659c5acbdb7831751e8be506eb90a6f72491fab40352f3b3fba16897acf6
+  languageName: node
+  linkType: hard
+
+"react-side-effect@npm:^2.1.0":
+  version: 2.1.1
+  resolution: "react-side-effect@npm:2.1.1"
+  peerDependencies:
+    react: ^16.3.0 || ^17.0.0
+  checksum: 5896f7c126b9e7147e3ea6cc967dab8e3a2f6c395bd5327d16483adb91177866eec47770500a92fece866ea551f395484f6e6e078796002293bc1b53b7e65b26
   languageName: node
   linkType: hard
 
