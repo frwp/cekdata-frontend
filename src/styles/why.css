@@ -1,0 +1,23 @@
+.why {
+  padding: 1em;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: xx-large;
+}
+
+.bold {
+  font-weight: 600;
+  font-size: 36px;
+}
+
+.details {
+  font-size: 36px;
+}
+
+@media screen and (max-width: 600px) {
+  .bold, .details {
+    font-size: large;
+  }
+}

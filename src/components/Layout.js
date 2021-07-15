@@ -1,9 +1,11 @@
-import '../styles/index.css';
+import '../styles/global.css';
 import React from 'react'
 import Header from './Header'
 import { Link } from 'gatsby';
 import ugmLogo from '../images/Logo Tengah Stack-Up 1.png';
 import kknLogo from '../images/logo_bersamaayah.png'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons'
 
 export default function Layout({ children, location }) {
   return (
@@ -12,7 +14,7 @@ export default function Layout({ children, location }) {
         {/* <Link style={{ margin: '1em' }} to="/test">Test</Link> */}
         <img src={kknLogo} style={{ height: '81px', marginInline: '0.5em' }} alt="Logo KKN Bersama Ayah" />
         <img src={ugmLogo} style={{ width: '80px', marginInline: '0.5em' }} alt="Logo UGM" />
-        <Link style={{ margin: '1em', marginRight: 'auto' }} to="/">Home</Link>
+        {location.pathname !== '/' && <Link style={{ margin: '1em', marginRight: 'auto' }} to="/"><FontAwesomeIcon icon={faAngleDoubleLeft} size="3x" color="#5B4434" /></Link>}
       </nav>
       <div className={location.pathname === '/' ? 'header-right' : ''}>
         <Header />

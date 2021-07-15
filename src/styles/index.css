@@ -1,22 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Montserrat&display=swap');
-
-* {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-}
-
-.title {
-  font-size: xx-large;
-  font-weight: 900;
-}
-
-.sub-title {
-  font-family: 'Bad Script', cursive;
+.home {
+  padding       : 2em;
+  display       : flex;
+  flex-direction: column;
+  margin: 5em 3em 5em 3em;
 }
 
 @media (min-width:600px){
   .home {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: flex-end;
   }
 }
@@ -25,38 +16,8 @@
   .home {
     justify-content: center;
     align-items: center;
+    margin: auto;
   }
-}
-.home {
-  padding       : 2em;
-  display       : flex;
-  flex-direction: column;
-  margin: 5em 3em 5em 3em;
-}
-
-/* Button styling */
-button {
-  background: #E3D7BF;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
-  font-weight: bold;
-  font-size: large;
-  width: 15em;
-}
-
-.index-button {
-  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
-}
-.index-button:hover, .index-button:focus {
-  box-shadow: 0 0 0 0 var(--hover), inset 8em 6em 0 0 var(--hover);
-}
-
-.index-button {
-  --color: #5B4434;
-  --hover: #bc7f62;
 }
 
 .reset {
@@ -66,46 +27,3 @@ button {
   /* --hover: #bc7f62; */
 }
 
-button {
-  color: var(--color);
-  transition: 0.25s;
-}
-button:hover, button:focus {
-  border-color: var(--hover);
-  color: #fff;
-}
-
-.layout {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-end;
-  width: 100%;
-}
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-header {
-  margin-left: 5em;
-  margin-right: 5em;
-}
-
-.header-right {
-  display: flex;
-  flex-direction: row-reverse;
-  margin-bottom: auto;
-  margin: 5em 5em 0 0;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 95vh;
-}
-
-footer {
-  margin-top: auto;
-}

@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Montserrat:wght@400;600;900&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  background-color: #F6F8ED;
+}
+
+/* Button styling */
+button {
+  background: #E3D7BF;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+  font-weight: bold;
+  font-size: large;
+  width: 20em;
+  color: var(--color);
+  transition: 0.25s;
+}
+
+.title, .sub-title {
+  color: #5B4434;
+}
+
+@media screen and (min-width: 600px) {
+  .title {
+    font-size: 4em;
+    font-weight: 900;
+  }
+  .sub-title {
+    font-family: 'Bad Script', cursive;
+    font-size: 2em;
+  } 
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: xx-large;
+    font-weight: 600;
+  }
+  .sub-title {
+    font-family: 'Bad Script', cursive;
+    font-size: x-large;
+  }
+  .col-25,
+  .col-75, .col-50 {
+    width: 100%;
+  }
+}
+
+button:hover, button:focus {
+  border-color: var(--hover);
+  color: #fff;
+}
+
+.index-button {
+  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
+}
+.index-button:hover, .index-button:focus {
+  box-shadow: 0 0 0 0 var(--hover), inset 8em 6em 0 0 var(--hover);
+}
+
+.index-button {
+  --color: #5B4434;
+  --hover: #bc7f62;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  width: 100%;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+}
+
+header {
+  margin-left: 5em;
+  margin-right: 5em;
+  line-height: 1;
+  margin-bottom: auto;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: auto;
+  margin: 5em 5em 0 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+}
+
+FontAwesomeIcon {
+  margin-left: 2em;
+}

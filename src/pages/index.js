@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from "gatsby";
+import '../styles/index.css';
 
 export default class Index extends Component {
   render() {

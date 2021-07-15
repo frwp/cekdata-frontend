@@ -1,13 +1,24 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
   justify-content: center;
-  max-width: 100%;
+  max-width      : 100%;
 }
 
-label, input {
-  margin: 1em;
+/* label {
+  margin       : 1em;
+  margin-bottom: auto;
+  align-self   : center;
+} */
+
+input[type=text],
+textarea {
+  width        : 100%;
+  padding      : 12px;
+  border       : 1px solid #ccc;
+  border-radius: 4px;
+  resize       : vertical;
 }
 
 label {
@@ -15,29 +26,21 @@ label {
   display: inline-block;
 }
 
-input[type=text], textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-
 .col-35 {
-  float: left;
-  width: 35%;
+  float     : left;
+  width     : 35%;
   margin-top: 6px;
 }
 
 .col-65 {
-  float: left;
-  width: 65%;
+  float     : left;
+  width     : 65%;
   margin-top: 6px;
 }
 
 .col-50 {
-  float: left;
-  width: 50%;
+  float     : left;
+  width     : 50%;
   margin-top: 6px;
 }
 
@@ -45,13 +48,17 @@ input[type=text], textarea {
 .row:after {
   content: "";
   display: table;
-  clear: both;
+  clear  : both;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .col-25, .col-75, .col-50, input[type=submit] {
-    width: 90%;
+@media screen and (max-width: 600px) {
+
+  .col-35,
+  .col-65,
+  .col-50,
+  input[type=submit] {
+    width     : 100%;
     margin-top: 0;
   }
 }

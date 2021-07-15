@@ -1,15 +1,39 @@
-import React from 'react'
+import React from 'react';
+import { navigate } from 'gatsby';
 import { useFormik } from 'formik';
+import axios from 'axios';
 import '../styles/check.css';
 
-export default function Check() {
+export default function Check(props) {
   const formik = useFormik({
     initialValues: {
       kodeKK: '',
       kodeNIK: '',
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      const apiURL = 'https://cekdata-jatijajar.herokuapp.com/api/get'
+      // alert(JSON.stringify(values, null, 2));
+      const config = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          kode_kk: values.kodeKK,
+          kode_nik: values.kodeNIK,
+        },
+        timeout: 4000,
+      }
+      axios({ url: apiURL, ...config }).then(result => {
+        if (result.status !== 404) {
+          // console.log(result.data);
+          navigate('/result', { state: { data: result.data } })
+        } else {
+          alert('Data tidak ditemukan!');
+        }
+      }).catch(err => {
+        console.warn(err);
+      })
     }
   });
 
