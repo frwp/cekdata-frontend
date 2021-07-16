@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/result.css';
+const isBrowser = typeof window !== "undefined";
 
 export default function Result(props) {
   const [data, setData] = useState([]);
@@ -26,7 +27,9 @@ export default function Result(props) {
     });
   };
 
-  window.addEventListener('scroll', toggleVisible);
+  if (isBrowser) {
+    window.addEventListener('scroll', toggleVisible); 
+  }
 
   useEffect(() => {
     function getData() {
