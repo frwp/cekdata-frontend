@@ -3,6 +3,31 @@ import '../styles/result.css';
 
 export default function Result(props) {
   const [data, setData] = useState([]);
+  const [openForm, setOpenForm] = useState(false);
+  const [displayButton, setDisplayButton] = useState(true);
+  const [visible, setVisible] = useState(false)
+
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 300) {
+      setVisible(true)
+    }
+    else if (scrolled <= 300) {
+      setVisible(false)
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 200,
+      behavior: 'smooth'
+      /* you can also use 'auto' behaviour
+         in place of 'smooth' */
+    });
+  };
+
+  window.addEventListener('scroll', toggleVisible);
+
   useEffect(() => {
     function getData() {
       const data = props.location.state ? props.location.state.data : [];
@@ -40,43 +65,61 @@ export default function Result(props) {
         )
       })
     )
-    // console.log(props.location.state.data)
-    // return JSON.stringify(props.location.state.data);
+  }
+
+  const handleOpenForm = () => {
+    setOpenForm(true);
   }
 
   return (
-    <div style={{ overflowX: 'auto' }}>
-      <table className='styled-table'>
-        <thead>
-          <tr>
-            <th>RT</th>
-            <th>RW</th>
-            <th>Dusun</th>
-            <th>Alamat</th>
-            <th>Nomor KK</th>
-            <th>Kepala Keluarga</th>
-            <th>NIK</th>
-            <th>Nama Anggota</th>
-            <th>Jenis Kelamin</th>
-            <th>Hubungan dalam Keluarga</th>
-            <th>Tempat Lahir</th>
-            <th>Tanggal Lahir</th>
-            <th>Status</th>
-            <th>Agama</th>
-            <th>Golongan Darah</th>
-            <th>Kewarganegaraan</th>
-            <th>Etnis/Suku</th>
-            <th>Pendidikan Terakhir</th>
-            <th>Pekerjaan</th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderTableBody()}
-        </tbody>
-      </table>
-      {/* <p>
+    <>
+      <div style={{ overflowX: 'auto' }}>
+        <table className='styled-table'>
+          <thead>
+            <tr>
+              <th>RT</th>
+              <th>RW</th>
+              <th>Dusun</th>
+              <th>Alamat</th>
+              <th>Nomor KK</th>
+              <th>Kepala Keluarga</th>
+              <th>NIK</th>
+              <th>Nama Anggota</th>
+              <th>Jenis Kelamin</th>
+              <th>Hubungan dalam Keluarga</th>
+              <th>Tempat Lahir</th>
+              <th>Tanggal Lahir</th>
+              <th>Status</th>
+              <th>Agama</th>
+              <th>Golongan Darah</th>
+              <th>Kewarganegaraan</th>
+              <th>Etnis/Suku</th>
+              <th>Pendidikan Terakhir</th>
+              <th>Pekerjaan</th>
+            </tr>
+          </thead>
+          <tbody>
+            {renderTableBody()}
+          </tbody>
+        </table>
+        {/* <p>
         {renderTableBody()}
       </p> */}
-    </div>
+      </div>
+      <div className='google-form'>
+        <div style={displayButton ? {} : { display: 'none' }}>
+          <p>Apakah data di atas sudah benar?</p>
+          <button className='index-button' onClick={() => { setDisplayButton(false) }} >Ya sudah benar</button>
+          <button className='index-button' onClick={() => { setDisplayButton(false); handleOpenForm(); }}>Ajukan perbaikan</button>
+        </div>
+        {openForm &&
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdNJn4SeJ4oErUDPcyRD_6GaC4oXIOftXb2qdllZFePVCyxKQ/viewform?embedded=true"
+            width="100%" height="3750"
+            title='Form ubah data' frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+        }
+        <button onClick={scrollToTop} style={{display: visible ? 'inline' : 'none'}} id="myBtn" title="Go to top">Top</button>
+      </div>
+    </>
   )
 }
