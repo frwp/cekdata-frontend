@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import '../styles/result.css';
 
 export default function Result(props) {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    function getData() {
+      const data = props.location.state ? props.location.state.data : [];
+      setData(data);
+    }
+    getData();
+  });
 
   const renderTableBody = () => {
-    const data = props.location.state.data;
+    console.table(data);
     return (
       data.map(item => {
         return (
@@ -19,7 +28,7 @@ export default function Result(props) {
             <td>{item.jenis_kelamin}</td>
             <td>{item.hubungan_dalam_keluarga}</td>
             <td>{item.tempat_lahir}</td>
-            <td>{new Date(item.tanggal_lahir.toString()).toString()}</td>
+            <td>{new Date(item.tanggal_lahir).toDateString()}</td>
             <td>{item.status_perkawinan}</td>
             <td>{item.agama}</td>
             <td>{item.golongan_darah}</td>
@@ -36,8 +45,8 @@ export default function Result(props) {
   }
 
   return (
-    <div className='table'>
-      <table>
+    <div style={{ overflowX: 'auto' }}>
+      <table className='styled-table'>
         <thead>
           <tr>
             <th>RT</th>

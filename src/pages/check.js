@@ -22,17 +22,24 @@ export default function Check(props) {
           kode_kk: values.kodeKK,
           kode_nik: values.kodeNIK,
         },
-        timeout: 4000,
+        timeout: 10000,
       }
       axios({ url: apiURL, ...config }).then(result => {
         if (result.status !== 404) {
-          // console.log(result.data);
-          navigate('/result', { state: { data: result.data } })
+          console.log(result.status);
+          navigate('/result', { state: { data: result.data.data } })
         } else {
-          alert('Data tidak ditemukan!');
+          console.log('status:' + result.status);
+          // window.alert('Data tidak ditemukan!');
         }
       }).catch(err => {
-        console.warn(err);
+          if (err.message.includes('404')) {
+            alert('Data tidak ditemukan!')
+          } else {
+            alert('Terjadi error di server, mohon tunggu kurang lebih 5 menit.')
+          }
+          // console.warn(err);
+          console.log(`err: ${err}`)
       })
     }
   });
