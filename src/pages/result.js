@@ -6,15 +6,15 @@ export default function Result(props) {
   const [data, setData] = useState([]);
   const [openForm, setOpenForm] = useState(false);
   const [displayButton, setDisplayButton] = useState(true);
-  const [visible, setVisible] = useState(false)
+  const [displayTopButton, setDisplayTopButton] = useState(false)
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
     if (scrolled > 300) {
-      setVisible(true)
+      setDisplayTopButton(true)
     }
     else if (scrolled <= 300) {
-      setVisible(false)
+      setDisplayTopButton(false)
     }
   };
 
@@ -121,7 +121,7 @@ export default function Result(props) {
             width="100%" height="3750"
             title='Form ubah data' frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
         }
-        <button onClick={scrollToTop} style={{display: visible ? 'inline' : 'none'}} id="myBtn" title="Go to top">Top</button>
+        <button onClick={scrollToTop} style={{display: displayTopButton ? 'inline' : 'none'}} id="myBtn" title="Go to top">Top</button>
       </div>
     </>
   )

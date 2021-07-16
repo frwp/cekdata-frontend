@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import '../styles/check.css';
+const isBrowser = typeof window !== "undefined";
 
 export default function Check(props) {
+  const [visible, setVisible] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
+  const [displayTopButton, setDisplayTopButton] = useState(false)
+
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 300) {
+      setDisplayTopButton(true)
+    }
+    else if (scrolled <= 300) {
+      setDisplayTopButton(false)
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 200,
+      behavior: 'smooth'
+      /* you can also use 'auto' behaviour
+         in place of 'smooth' */
+    });
+  };
+
+  if (isBrowser) {
+    window.addEventListener('scroll', toggleVisible);
+  }
+
   const formik = useFormik({
     initialValues: {
       kodeKK: '',
@@ -33,13 +61,14 @@ export default function Check(props) {
           // window.alert('Data tidak ditemukan!');
         }
       }).catch(err => {
-          if (err.message.includes('404')) {
-            alert('Data tidak ditemukan!')
-          } else {
-            alert('Terjadi error di server, mohon tunggu kurang lebih 5 menit.')
-          }
-          // console.warn(err);
-          console.log(`err: ${err}`)
+        if (err.message.includes('404')) {
+          // alert('Data tidak ditemukan!')
+          setIsNotFound(true);
+        } else {
+          alert('Terjadi error di server, mohon tunggu beberapa menit.')
+        }
+        // console.warn(err);
+        console.log(`err: ${err}`)
       })
     }
   });
@@ -52,7 +81,7 @@ export default function Check(props) {
             <label htmlFor="kodeKK">Nomor Kartu Keluarga</label>
           </div>
           <div className="col-65">
-            <input type="text" id="kodeKK" name="kodeKK" onChange={formik.handleChange} value={formik.values.kodeKK} />
+            <input type="text" id="kodeKK" name="kodeKK" onChange={formik.handleChange} value={formik.values.kodeKK} required />
           </div>
         </div>
         <br />
@@ -62,7 +91,7 @@ export default function Check(props) {
           </div>
           <br />
           <div className="col-65">
-            <input type="text" name="kodeNIK" id="kodeNIK" onChange={formik.handleChange} value={formik.values.kodeNIK} />
+            <input type="text" name="kodeNIK" id="kodeNIK" onChange={formik.handleChange} value={formik.values.kodeNIK} required />
           </div>
         </div>
         <br />
@@ -73,6 +102,19 @@ export default function Check(props) {
           <div className="col-50">
             <button className="index-button reset" type="reset">Reset</button>
           </div>
+        </div>
+        <div className="hidden-button">
+          {isNotFound &&
+            <>
+              <p>Data tidak ditemukan. Ingin tambah data baru?</p>
+              <button className="index-button" onClick={() => { setVisible(true); setIsNotFound(false); }} >Tambah data</button>
+            </>
+          }
+          {visible && <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSeVQBB6MzKErwVkC6pDmZg-0wX3bBMK-LwOFbyuyF266mwciQ/viewform?embedded=true"
+            title="Form tambah data" width="100%" height="3750" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+          }
+          <button onClick={scrollToTop} style={{ display: displayTopButton ? 'inline' : 'none' }} id="myBtn" title="Go to top">Top</button>
         </div>
       </form>
     </div>
