@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { faSync } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import '../styles/result.css';
 const isBrowser = typeof window !== "undefined";
 
@@ -7,6 +9,7 @@ export default function Result(props) {
   const [openForm, setOpenForm] = useState(false);
   const [displayButton, setDisplayButton] = useState(true);
   const [displayTopButton, setDisplayTopButton] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
@@ -84,7 +87,13 @@ export default function Result(props) {
   }
 
   const handleOpenForm = () => {
-    setOpenForm(true);
+    setLoading(true);
+    setTimeout(() => {
+      setOpenForm(true);
+      setLoading(false);
+    }
+      , 2000);
+
   }
 
   return (
@@ -140,11 +149,14 @@ export default function Result(props) {
           <button className='index-button' onClick={() => { setDisplayButton(false) }} >Ya sudah benar</button>
           <button className='index-button' onClick={() => { setDisplayButton(false); handleOpenForm(); }}>Ajukan perbaikan</button>
         </div>
+        {loading &&
+          <FontAwesomeIcon icon={faSync} style={{ background: 'none' }} className="fa fa-refresh fa-spin" />
+        }
         {openForm &&
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSdNJn4SeJ4oErUDPcyRD_6GaC4oXIOftXb2qdllZFePVCyxKQ/viewform?embedded=true"
             width="100%" height="3750"
-            title='Form ubah data' frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+            title='Form ubah data' frameborder="0" marginheight="0" marginwidth="0">Mohon tunggu</iframe>
         }
         <button onClick={scrollToTop} style={{ display: displayTopButton ? 'inline' : 'none' }} id="myBtn" title="Go to top">Top</button>
       </div>

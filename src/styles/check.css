@@ -6,12 +6,6 @@
   max-width      : 100%;
 }
 
-/* label {
-  margin       : 1em;
-  margin-bottom: auto;
-  align-self   : center;
-} */
-
 input[type=text],
 textarea {
   width        : 100%;
