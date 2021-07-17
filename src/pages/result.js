@@ -28,7 +28,7 @@ export default function Result(props) {
   };
 
   if (isBrowser) {
-    window.addEventListener('scroll', toggleVisible); 
+    window.addEventListener('scroll', toggleVisible);
   }
 
   useEffect(() => {
@@ -39,24 +39,37 @@ export default function Result(props) {
     getData();
   });
 
-  const renderTableBody = () => {
+  const renderTableBody1 = () => {
     console.table(data);
     return (
       data.map(item => {
         return (
           <tr key={item.id}>
+            <td>{item.no_urut_dalam_kk}</td>
             <td>{item.rt}</td>
             <td>{item.rw}</td>
             <td>{item.dusun}</td>
             <td>{item.alamat}</td>
             <td>{item.kode_kk}</td>
             <td>{item.kepala_keluarga}</td>
-            <td>{item.kode_nik}</td>
             <td>{item.nama_anggota}</td>
+            <td>{item.kode_nik}</td>
             <td>{item.jenis_kelamin}</td>
-            <td>{item.hubungan_dalam_keluarga}</td>
             <td>{item.tempat_lahir}</td>
             <td>{new Date(item.tanggal_lahir).toDateString()}</td>
+          </tr>
+        )
+      })
+    )
+  }
+  const renderTableBody2 = () => {
+    console.table(data);
+    return (
+      data.map(item => {
+        return (
+          <tr key={item.id}>
+            <td>{item.no_urut_dalam_kk}</td>
+            <td>{item.hubungan_dalam_keluarga}</td>
             <td>{item.status_perkawinan}</td>
             <td>{item.agama}</td>
             <td>{item.golongan_darah}</td>
@@ -76,22 +89,34 @@ export default function Result(props) {
 
   return (
     <>
-      <div style={{ overflowX: 'auto' }}>
+      <div id="table">
         <table className='styled-table'>
           <thead>
             <tr>
+              <th>No.</th>
               <th>RT</th>
               <th>RW</th>
               <th>Dusun</th>
               <th>Alamat</th>
               <th>Nomor KK</th>
               <th>Kepala Keluarga</th>
-              <th>NIK</th>
               <th>Nama Anggota</th>
+              <th>NIK</th>
               <th>Jenis Kelamin</th>
-              <th>Hubungan dalam Keluarga</th>
               <th>Tempat Lahir</th>
               <th>Tanggal Lahir</th>
+            </tr>
+          </thead>
+          <tbody>
+            {renderTableBody1()}
+          </tbody>
+        </table>
+        <br />
+        <table className='styled-table'>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Hubungan dalam Keluarga</th>
               <th>Status</th>
               <th>Agama</th>
               <th>Golongan Darah</th>
@@ -102,7 +127,7 @@ export default function Result(props) {
             </tr>
           </thead>
           <tbody>
-            {renderTableBody()}
+            {renderTableBody2()}
           </tbody>
         </table>
         {/* <p>
@@ -121,7 +146,7 @@ export default function Result(props) {
             width="100%" height="3750"
             title='Form ubah data' frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
         }
-        <button onClick={scrollToTop} style={{display: displayTopButton ? 'inline' : 'none'}} id="myBtn" title="Go to top">Top</button>
+        <button onClick={scrollToTop} style={{ display: displayTopButton ? 'inline' : 'none' }} id="myBtn" title="Go to top">Top</button>
       </div>
     </>
   )
