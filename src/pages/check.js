@@ -54,7 +54,7 @@ export default function Check(props) {
           kode_kk: values.kodeKK,
           kode_nik: values.kodeNIK,
         },
-        timeout: 10000,
+        timeout: 15000,
       }
       axios({ url: apiURL, ...config }).then(result => {
         if (result.status !== 404) {
@@ -127,10 +127,11 @@ export default function Check(props) {
                 <button className="index-button" onClick={() => { setVisible(true); setIsNotFound(false); }} >Tambah data</button>
               </>
             }
-            {visible && <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSeVQBB6MzKErwVkC6pDmZg-0wX3bBMK-LwOFbyuyF266mwciQ/viewform?embedded=true"
-              title="Form tambah data" width="100%" height="3750" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-            }
+            <span style={visible ? { width: '100%' } : { display: 'none' }}>
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSeVQBB6MzKErwVkC6pDmZg-0wX3bBMK-LwOFbyuyF266mwciQ/viewform?embedded=true"
+                title="Form tambah data" width="100%" height="3750" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+            </span>
             <button onClick={scrollToTop} style={{ display: displayTopButton ? 'inline' : 'none' }} id="myBtn" title="Go to top">Top</button>
           </div>
         </form>

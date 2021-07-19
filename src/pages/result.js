@@ -152,12 +152,12 @@ export default function Result(props) {
         {loading &&
           <FontAwesomeIcon icon={faSync} style={{ background: 'none' }} className="fa fa-refresh fa-spin" />
         }
-        {openForm &&
+        <span style={openForm ? { width: '100%' } : { display: 'none' }}>
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSdNJn4SeJ4oErUDPcyRD_6GaC4oXIOftXb2qdllZFePVCyxKQ/viewform?embedded=true"
             width="100%" height="3750"
             title='Form ubah data' frameborder="0" marginheight="0" marginwidth="0">Mohon tunggu</iframe>
-        }
+        </span>
         <button onClick={scrollToTop} style={{ display: displayTopButton ? 'inline' : 'none' }} id="myBtn" title="Go to top">Top</button>
       </div>
     </>
