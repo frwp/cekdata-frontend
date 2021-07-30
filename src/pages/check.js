@@ -88,7 +88,7 @@ export default function Check(props) {
               <label htmlFor="kodeKK">Nomor Kartu Keluarga</label>
             </div>
             <div className="col-65">
-              <input type="text" id="kodeKK" name="kodeKK" onChange={formik.handleChange} value={formik.values.kodeKK} required />
+              <input type="text" id="kodeKK" name="kodeKK" inputMode="numeric" onChange={formik.handleChange} value={formik.values.kodeKK} required />
             </div>
           </div>
           <br />
@@ -98,7 +98,7 @@ export default function Check(props) {
             </div>
             <br />
             <div className="col-65">
-              <input type="text" name="kodeNIK" id="kodeNIK" onChange={formik.handleChange} value={formik.values.kodeNIK} required />
+              <input type="text" name="kodeNIK" id="kodeNIK" inputMode="numeric" onChange={formik.handleChange} value={formik.values.kodeNIK} required />
             </div>
           </div>
           <br />
@@ -110,7 +110,7 @@ export default function Check(props) {
                 }{' '}
                 {!loading &&
                   <span style={{ background: 'none', fontWeight: 'bold' }}>
-                    Cek Sekarang
+                    Cek
                   </span>
                 }
                 {loading && <span style={{ background: 'none', fontWeight: 'bold' }}>Mohon tunggu</span>}
